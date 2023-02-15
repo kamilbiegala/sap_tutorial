@@ -7,5 +7,7 @@
 			"path": "../tutorial/templates"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"SAP HANA Database Explorer.displaySapWebAnalyticsStartupNotification": false
+	}
 }

@@ -9,7 +9,7 @@ modules:
   requires:
   - name: sap_tutorial-db
   - name: sap_tutorial-auth
-  # - name: sap_tutorial-logs
+  - name: sap_tutorial-logs
   provides:
   - name: srv-api
     properties:
@@ -23,7 +23,7 @@ modules:
   path: gen/db
   requires:
   - name: sap_tutorial-db
-  # - name: sap_tutorial-logs
+  - name: sap_tutorial-logs
   parameters:
     buildpack: nodejs_buildpack
 - name: sap_tutorial-destinations
@@ -137,6 +137,11 @@ resources:
   parameters:
     service: html5-apps-repo
     service-plan: app-host
+- name: sap_tutorial-logs
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: application-logs
+    service-plan: lite
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
@@ -147,8 +152,3 @@ build-parameters:
     - npm install --production
     - npx -p @sap/cds-dk cds build --production
     - npx rimraf gen/db/src/gen/data
-# - name: sap_tutorial-logs
-#   type: org.cloudfoundry.managed-service
-#   parameters:
-#     service: application-logs
-#     service-plan: lite
